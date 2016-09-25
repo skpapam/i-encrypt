@@ -1,0 +1,27 @@
+
+{
+	"name": "i-encrypt",
+	"version": "1.0.0",
+	"description": "Encryption / Decryption made simple",
+	"main": "index.js",
+	"scripts": {
+		"test" : "mocha --reporter spec"
+	},
+	"keywords": [
+	    "encrypt",
+	  	"decrypt",
+        "security",
+        "crypto",
+        "hmac"
+	],
+	"author": "Skevos Papamichail <contact@skevosp.me> (www.skevosp.me)",
+	"license": "MIT",
+	"dependencies": {},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/skpapam/queue-ds.git"
+	},
+	"bugs": {
+		"url": "https://github.com/skpapam/queue-ds/issues"
+	}
+}
