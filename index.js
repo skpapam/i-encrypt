@@ -23,7 +23,7 @@ module.exports = function (options){
  */
 function IEncrypt(options){
 	options = options || {};
-	var key = new Buffer(options.key) || crypto.randomBytes(32);
+	var key = options.key ? new Buffer(options.key) : crypto.randomBytes(32);
 	var debug = options.debug || false;
 	
 	/**

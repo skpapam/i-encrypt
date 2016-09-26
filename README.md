@@ -31,8 +31,12 @@ Will return the encrypted text or null on fail.
 
 * **ie.decrypt(text)** Will decrypt the given text. Will return an object, a string, a number or null on fail.
 
-* **ie.sign(data)** Will generate an hmac signature for the given data. The data must be any object or string or number.
+* **ie.sign(data, format)** Will generate an hmac signature for the given data. 
+The data must be any object or string or number.
+The format is the format of the generated signature by default is *'base64'*.
 Will return the signature or null on fail.
+
+* **ie.validate(data, signature, format)** Validate data's signature. Will return boolean. 
 
 ## LICENSE 
 MIT
