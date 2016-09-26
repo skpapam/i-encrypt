@@ -80,11 +80,8 @@ function IEncrypt(options){
 			vector = new Buffer(t[1], 'base64');
 			hash = t[2];
 			
-			// calculate signature
-			new_hash = this.sign(encrypted+t[1]);
-			
-			//check data integrity by comparing the two hash values 
-			if(!compare(hash,new_hash)){
+			//check data integrity by validating signature 
+			if(!this.validate(encrypted+t[1], hash)){
 				throw new Error('Could not verify signature');
 			}
 			
@@ -130,6 +127,18 @@ function IEncrypt(options){
 			if(debug) console.error('An error occured while signing : %s',e.stack);
 			return null;
 		}
+	}
+	
+	/**
+	 * Validate data signature
+	 * @param data  {Object} || {String} || {Number}
+	 * @param signature {String} the produced signature for the data
+	 * @param format {String} format of the signature. Default is 'base64'
+	 * @return {Boolean}
+	 */
+	this.validate = function(data, signature, format){
+		var new_sign = this.sign(data,format);
+		return new_sign?compare(signature,new_sign):false;
 	}
 	
 	/**
