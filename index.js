@@ -23,18 +23,18 @@ module.exports = function (options){
  */
 function IEncrypt(options){
 	options = options || {};
-	var key = options.key || crypto.randomBytes(32);
+	var key = new Buffer(options.key) || crypto.randomBytes(32);
 	var debug = options.debug || false;
 	
 	/**
 	 * Encryption method.
-	 * @param obj - What to encrypt it can be an object, string or number.
+	 * @param data - What to encrypt it can be an object, string or number.
 	 * @return {String} the encrypted text or null on fail
 	 */
-	this.encrypt = function(obj){
+	this.encrypt = function(data){
 		try{
 			//serialize
-			var original = serialize(obj);
+			var original = serialize(data);
 			
 			//if serialization failed throw an error
 			if(!original) throw new Error('Invalid type of object given for encryption');
@@ -108,14 +108,14 @@ function IEncrypt(options){
 	
 	/**
 	 * Produce a signature for the given object
-	 * @param obj {Object} || {String} || {Number}
+	 * @param data {Object} || {String} || {Number}
 	 * @param format {string} The format of the signature - Default is 'base64'
 	 * @returns {String} the signature or null on fail
 	 */
-	this.sign = function(obj, format){
+	this.sign = function(data, format){
 		try{
-			// Serialize object
-			var serialized = serialize(obj);
+			// Serialize data
+			var serialized = serialize(data);
 			
 			// If not serialized properly throw an Error
 			if(!serialized) throw new Error('Cannot serialize given type of object');
@@ -134,12 +134,13 @@ function IEncrypt(options){
 	
 	/**
 	 * Private serialization method
-	 * @param obj {Object} || {String} || {Number}
+	 * @private
+	 * @param data {Object} || {String} || {Number}
 	 * @returns {String} or null on fail
 	 */
-	var serialize = function(obj){
-		return typeof obj === 'object' 
-			? JSON.stringify(obj) 
-			: (typeof obj === 'string' || typeof obj === 'number' ? String(obj) : null);
+	var serialize = function(data){
+		return typeof data === 'object' 
+			? JSON.stringify(data) 
+			: (typeof data === 'string' || typeof data === 'number' ? String(data) : null);
 	}
 }
