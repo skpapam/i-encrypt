@@ -1,6 +1,6 @@
 # i-encrypt
 
-Encryption / Encryption made simple
+Encryption / Decryption made simple
 
 ## Installation
 
