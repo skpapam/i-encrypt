@@ -4,9 +4,6 @@
 	"version": "1.0.0",
 	"description": "Encryption / Decryption made simple",
 	"main": "index.js",
-	"scripts": {
-		"test" : "mocha --reporter spec"
-	},
 	"keywords": [
 	    "encrypt",
 	  	"decrypt",
@@ -19,9 +16,9 @@
 	"dependencies": {},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/skpapam/queue-ds.git"
+		"url": "https://github.com/skpapam/i-encrypt.git"
 	},
 	"bugs": {
-		"url": "https://github.com/skpapam/queue-ds/issues"
+		"url": "https://github.com/skpapam/i-encrypt/issues"
 	}
 }
